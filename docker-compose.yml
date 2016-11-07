@@ -4,8 +4,15 @@ services:
     image: registry 
     ports:
      - "5000:5000"
+    networks:
+     - default
   jenkins:
     image: jenkins
     ports:
      - "8080:8080"
      - "50000:50000"
+    networks:
+     - default
+networks:
+# 同一ネットワークにつながっている service は links を書かなくても[registry, jenkins]といった名前で相互に接続可能
+  default:
